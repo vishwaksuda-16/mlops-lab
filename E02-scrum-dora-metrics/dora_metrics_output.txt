@@ -1,0 +1,5 @@
+===== DORA METRICS =====
+Deployment Frequency: 0.83 deployments/day
+Average Lead Time for Changes: 3.20 hours
+Change Failure Rate: 20.00%
+Mean Time to Recovery: 2.50 hours
