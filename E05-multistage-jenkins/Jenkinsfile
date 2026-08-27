@@ -5,6 +5,10 @@ pipeline {
         }
     }
 
+    options {
+        skipDefaultCheckout(true)
+    }
+
     stages {
 
         stage('Checkout') {
@@ -15,26 +19,34 @@ pipeline {
 
         stage('Install Deps') {
             steps {
-                sh 'pip install -r requirements.txt'
+                dir('E05-multistage-jenkins') {
+                    sh 'pip install -r requirements.txt'
+                }
             }
         }
 
         stage('Unit Tests') {
             steps {
-                sh 'pytest -v'
+                dir('E05-multistage-jenkins') {
+                    sh 'pytest -v'
+                }
             }
         }
 
         stage('Static Analysis') {
             steps {
-                sh 'flake8 app.py test_app.py'
+                dir('E05-multistage-jenkins') {
+                    sh 'flake8 app.py test_app.py'
+                }
             }
         }
 
         stage('Deploy to Staging') {
             steps {
-                sh 'echo "Deploying application to staging..."'
-                sh 'echo "Deployment successful!"'
+                dir('E05-multistage-jenkins') {
+                    sh 'echo "Deploying application to staging..."'
+                    sh 'echo "Deployment successful!"'
+                }
             }
         }
     }
