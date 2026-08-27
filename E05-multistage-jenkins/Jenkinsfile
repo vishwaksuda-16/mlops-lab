@@ -1,0 +1,41 @@
+pipeline {
+    agent {
+        docker {
+            image 'python:3.11'
+        }
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Install Deps') {
+            steps {
+                sh 'pip install -r requirements.txt'
+            }
+        }
+
+        stage('Unit Tests') {
+            steps {
+                sh 'pytest -v'
+            }
+        }
+
+        stage('Static Analysis') {
+            steps {
+                sh 'flake8 app.py test_app.py'
+            }
+        }
+
+        stage('Deploy to Staging') {
+            steps {
+                sh 'echo "Deploying application to staging..."'
+                sh 'echo "Deployment successful!"'
+            }
+        }
+    }
+}
