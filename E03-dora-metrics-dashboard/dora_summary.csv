@@ -1,0 +1,5 @@
+Metric,Your Value,Elite Threshold,Status
+Deployment Frequency,3.75 deployments/week,>= 7 deployments/week,Below Elite
+Lead Time for Changes,2.07 hours,< 1 hour,Below Elite
+Change Failure Rate,20.00%,<= 15%,Below Elite
+Mean Time to Recovery,2.17 hours,< 1 hour,Below Elite
