@@ -9,7 +9,8 @@ X = train.drop("passed", axis=1)
 y = train["passed"]
 
 model = RandomForestClassifier(
-    n_estimators=100,
+    n_estimators=1,
+    max_depth=1,
     random_state=42
 )
 
