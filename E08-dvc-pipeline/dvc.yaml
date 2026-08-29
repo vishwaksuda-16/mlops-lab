@@ -1,0 +1,25 @@
+stages:
+  prepare:
+    cmd: python prepare.py
+    deps:
+    - data.csv
+    - prepare.py
+    outs:
+    - test.csv
+    - train.csv
+  train:
+    cmd: python train.py
+    deps:
+    - train.csv
+    - train.py
+    outs:
+    - model.pkl
+  evaluate:
+    cmd: python evaluate.py
+    deps:
+    - evaluate.py
+    - model.pkl
+    - test.csv
+    metrics:
+    - metrics.json:
+        cache: false
